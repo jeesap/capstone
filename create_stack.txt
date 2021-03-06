@@ -1,6 +1,6 @@
 eksctl create cluster \
 --name capstone \
---version 1.17 \
+--version 1.19 \
 --region us-west-2 \
 --nodegroup-name linux-nodes \
 --nodes 4 \
