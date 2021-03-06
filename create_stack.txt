@@ -1,0 +1,11 @@
+eksctl create cluster \
+--name capstone \
+--version 1.17 \
+--region us-west-2 \
+--nodegroup-name linux-nodes \
+--nodes 4 \
+--nodes-min 1 \
+--nodes-max 5 \
+--ssh-access \
+--ssh-public-key udacity.pem \
+--managed
