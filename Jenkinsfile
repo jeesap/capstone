@@ -10,7 +10,7 @@ pipeline {
                   
          stage('Upload to AWS S3') {
               steps {
-                  withAWS(region:'us-west-2',credentials:'jenkins') {
+                  withAWS(region:'us-west-2',credentials:'aws') {
                   sh 'echo "Uploading content with AWS creds"'
                       s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'index.html', bucket:'udapeople-jees1979')
                   }
