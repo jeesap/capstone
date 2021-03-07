@@ -3,9 +3,9 @@ eksctl create cluster \
 --version 1.19 \
 --region us-west-2 \
 --nodegroup-name linux-nodes \
---nodes 4 \
+--nodes 3 \
 --nodes-min 1 \
---nodes-max 5 \
+--nodes-max 4 \
 --ssh-access \
 --ssh-public-key udacity.pem \
 --managed
