@@ -19,7 +19,7 @@ pipeline {
 		stage('Upload docker Image')
 		{
 			steps{
-				sh 'docker build . --tag=capstone'
+				sh 'docker build . --tag=jeesap/capstone'
 				withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'passwd', usernameVariable: 'username')]) {
 					sh 'docker login -u $username -p $passwd'
 					sh 'docker push jeesap/capstone:latest'
