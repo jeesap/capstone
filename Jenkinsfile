@@ -25,21 +25,16 @@ pipeline {
                     }
                }  
           
-         stage('Build Docker Image') {
-               steps { 
-                  sh 'docker build --tag=capstone .'
-              }
-         }
-         stage('upload image to Dockerhub') {
-              steps { 
-                  script {
-                  withDockerRegistry([ credentialsId: "dockerhub", url: "" ]){
-                  sh "docker tag capstone jees/capstone"
-                  sh 'docker push jees/capstone'
-                  }
-                  }
-              }
-         }
+		stage('Upload docker Image')
+		{
+			steps{
+				sh 'docker build . --tag=jees/capstone'
+				withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'passwd', usernameVariable: 'username')]) {
+					sh 'docker login -u $username -p $passwd'
+					sh 'docker push jees/capstone'
+				}
+			}
+		}
           
           stage('Deploy to AWS Kubernetes Cluster') {
              when {
