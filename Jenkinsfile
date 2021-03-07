@@ -10,7 +10,7 @@ pipeline {
                   
          stage('Upload to AWS S3') {
             when {
-               branch 'main'
+               branch 'master'
             }
               steps {
                   withAWS(region:'us-west-2',credentials:'jenkins') {
@@ -38,7 +38,7 @@ pipeline {
           
          stage('Build Docker Image') {
              when {
-                branch 'main'
+                branch 'master'
             }
               steps { 
                   sh 'docker build --tag=capstone .'
@@ -57,7 +57,7 @@ pipeline {
           
           stage('Deploy to AWS Kubernetes Cluster') {
              when {
-                branch 'main'
+                branch 'master'
             }
               steps {
                   withAWS(region:'us-west-2',credentials:'jenkins') {
