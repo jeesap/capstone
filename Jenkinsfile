@@ -11,7 +11,7 @@ pipeline {
           
     		stage("Linting") {
 			steps {
-      		              sh '/usr/bin/hadolint Dockerfile'
+      		              sh 'sudo /usr/bin/hadolint Dockerfile'
 			}
 		      	} 
           
