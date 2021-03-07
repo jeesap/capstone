@@ -10,7 +10,7 @@ pipeline {
                   
          stage('Upload to AWS S3') {
             when {
-               branch 'main'
+               branch 'master'
             }
               steps {
                   withAWS(region:'us-west-2',credentials:'jenkins') {
