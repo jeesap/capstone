@@ -8,14 +8,6 @@ pipeline {
               }
          }
                   
-         stage('Upload to AWS S3') {
-              steps {
-                  withAWS(region:'us-west-2',credentials:'aws') {
-                  sh 'echo "Uploading content with AWS creds"'
-                      s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'index.html', bucket:'udapeople-jees1979')
-                  }
-              }
-         }
           
           stage ("lint dockerfile") {
                agent {
@@ -34,10 +26,7 @@ pipeline {
                }  
           
          stage('Build Docker Image') {
-             when {
-                branch 'master'
-            }
-              steps { 
+               steps { 
                   sh 'docker build --tag=capstone .'
               }
          }
