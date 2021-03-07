@@ -28,11 +28,8 @@ pipeline {
 		}
           
           stage('Deploy to AWS Kubernetes Cluster') {
-             when {
-                branch 'master'
-            }
-              steps {
-                  withAWS(region:'us-west-2',credentials:'jenkins') {
+                  steps {
+                  withAWS(region:'us-west-2',credentials:'aws_acess') {
                   sh "aws eks --region us-west-2 update-kubeconfig --name capstone"
                   sh "kubectl apply -f deployment.yml"
                   sh "kubectl get nodes"
