@@ -31,7 +31,7 @@ pipeline {
 				sh 'docker build . --tag=jees/capstone'
 				withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'passwd', usernameVariable: 'username')]) {
 					sh 'docker login -u $username -p $passwd'
-					sh 'docker push jees/capstone'
+					sh 'docker push jees/capstone:latest'
 				}
 			}
 		}
