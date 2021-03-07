@@ -9,14 +9,14 @@ pipeline {
          }
                   
           
-    		stage("Linting") {
+    		stage("Lint Dockerfile") {
 			steps {
       		              sh 'sudo /usr/bin/hadolint Dockerfile'
 			}
 		      	} 
           
 	     
-		stage('Upload docker Image')
+		stage('Build and Upload docker Image')
 		{
 			steps{
 				sh 'docker build . --tag=jeesap/capstone'
