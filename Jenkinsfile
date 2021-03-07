@@ -10,10 +10,12 @@ pipeline {
                   
           
     		stage("Linting") {
-      		echo 'Linting...'
-      		sh '/usr/bin/hadolint Dockerfile'
-          	} 
+			steps {
+      		              sh '/usr/bin/hadolint Dockerfile'
+			}
+		      	} 
           
+	     
 		stage('Upload docker Image')
 		{
 			steps{
