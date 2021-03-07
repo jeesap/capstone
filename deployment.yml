@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: capstone
-          image: jees/capstone
+          image: jeesap/capstone
           imagePullPolicy: Always
           ports:
             - containerPort: 80
